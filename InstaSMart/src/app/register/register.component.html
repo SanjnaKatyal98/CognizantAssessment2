@@ -1,0 +1,45 @@
+<div id="container">
+    <form #tempForm="ngForm" (ngSubmit)="onSubmit(tempForm)" autocomplete="false">
+        <p> enter name: <input  #fullName="ngModel" type="text" name="fullName" required ngModel id="fullName" maxlength="25"> </p>
+        <div *ngIf="!fullName?.valid && (fullName?.dirty || fullName?.touched)" class="error">
+            <div *ngIf="fullName.errors?.['required']">
+                Name is required
+            </div>
+            <div *ngIf="fullName.errors?.['maxlength']">
+                FirstName maximum number of chars required is 25
+            </div>
+        </div><br>
+        <p> enter age: <input  #age="ngModel" type="number" name="age" required ngModel id="age"> </p>
+        <div *ngIf="!age?.valid && (age?.dirty || age?.touched)" class="error">
+            <div *ngIf="age.errors?.['required']">
+                Age is required
+            </div>
+        </div><br>
+        <p>select country:
+            <select #country name="country" id="country" required>
+                <option [ngValue]="c.id" *ngFor="let c of countries">{{c.name}}</option>
+            </select>
+        </p><br>
+        <p>gender:  
+            <input type="radio" id="sex" name="sex" #sex required>Male
+            <input type="radio" id="sex" name="sex" #sex required>Female
+        </p><br>
+        <p>ID: <input type="text" name="id" id="id" #id="ngModel" ngModel required getValidator ></p><br>
+        <div *ngIf="!id?.valid && (id?.dirty || id?.touched)" class="error">
+            <div *ngIf="id.errors?.['required']">
+                ID is required
+            </div>
+            <div *ngIf="id.errors?.['gve']">
+                number shld be grtr than {{id.errors?.['requiredValue']}}
+            </div>
+        </div><br>
+        <button class="btn btn-success" type="submit" [disabled]="!tempForm.valid">Submit</button>
+        <button class="btn btn-primary" type="button" (click)="reset(tempForm)">Reset</button>
+    </form>
+</div><br><br>
+<div class="info">
+    {{tempForm.value|json}}<br><br>
+    {{tempForm.valid}}<br><br>
+    {{tempForm.submitted}}<br><br>
+    {{fullName.value}}
+</div>

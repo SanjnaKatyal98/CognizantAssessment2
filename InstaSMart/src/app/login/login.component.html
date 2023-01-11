@@ -1,0 +1,25 @@
+<div class="container">
+    <form id="loginForm" name="loginForm" class="loginForm" #loginForm="ngForm">
+        <label for="username">Enter Username:</label><br>
+        <input type="text" #username="ngModel" minlength="5" maxlength="25" required name="username" id="username" class="username" ngModel><br><br>
+        <div id="uid" *ngIf="!username.valid && (username?.dirty || username?.touched)">
+            <div *ngIf="username.errors?.['required']">
+                userame is required
+            </div>
+            <div *ngIf="username.errors?.['minlength']">
+                min length is 5
+            </div>
+        </div><br>
+        <label for="password">Enter Password: **</label><br>
+        <input type="password" #password="ngModel" minlength="8" maxlength="25" required name="password" id="password" class="password" ngModel><br><br>
+        <div id="uid" *ngIf="!password.valid && (password?.dirty || password?.touched)">
+            <div *ngIf="password.errors?.['required']">
+                password is required
+            </div>
+            <div *ngIf="password.errors?.['minlength']">
+                min length is 8
+            </div>
+        </div><br><button class="btn btn-success" type="submit" (click)="onSubmit(loginForm)">login</button>
+        <button class="btn btn-primary" type="reset">clear</button>
+    </form>
+</div>

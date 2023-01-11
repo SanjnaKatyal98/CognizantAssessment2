@@ -1,0 +1,20 @@
+#container{
+    background-color: black;
+    color: white;
+    margin: 15px;
+    padding: 5px;
+    text-align: center;
+}
+.info{
+    background-color: aqua;
+    color: black;
+    margin: 15px;
+    padding: 5px;
+    text-align: center;
+}
+.error{
+    color: red;
+}
+#fullName{
+    width: 35%;
+}
