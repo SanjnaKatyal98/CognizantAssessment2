@@ -1,0 +1,61 @@
+<div *ngIf="product" class="col-md-6 user-container" style="margin: auto;">
+
+  <div class="card-header"><h2 class="text-center">{{pageTitle}}</h2></div>
+
+  <!-- <h2 class="text-center">Add Product</h2> -->
+    
+    <form [formGroup]="addProduct" (ngSubmit)="saveProduct(product)">
+      <!-- name -->
+      <div class="form-group  my-3">
+        <label for="name">Product Name:</label>
+        <input type="text" formControlName="name" placeholder="Product name" name="name" class="form-control" id="name" (blur)="blur()">
+      </div>
+
+      <!-- price -->
+      <div class="form-group  my-3">
+        <label for="price">Price:</label>
+        <input type="number" formControlName="price" placeholder="price" name="price" class="form-control" id="price" (blur)="blur()">
+      </div>
+
+      <!-- category -->
+      <div class="form-group my-3">
+        <label for="category">Category</label>
+        <select (blur)="blur()" name="category" id="category" class="form-control" formControlName="category">
+          <option value="all">all</option>
+          <option value="food">food</option>
+          <option value="cosmetic">cosmetic</option>
+          <option value="clothing">clothing</option>
+          <option value="furniture">furniture</option>
+        </select>
+      </div>
+
+      <!-- quantity -->
+      <div class="form-group  my-3">
+        <label for="quantity"> Quantity:</label>
+        <input type="number" formControlName="quantity" placeholder="quantity" name="quantity" class="form-control" id="quantity" (blur)="blur()">
+      </div>
+
+      <!-- image -->
+      <div class="form-group  my-3">
+        <label for="image">Image:</label>
+        <input type="text" formControlName="image" placeholder="Product Image" name="image" class="form-control" id="image" (blur)="blur()">
+      </div>
+
+      <!-- rating -->
+      <div class="form-group  my-3">
+        <label for="rating"> Rating:</label>
+        <input type="number" formControlName="rating" placeholder="Rating" name="rating" class="form-control" id="rating" (blur)="blur()">
+      </div>
+
+      <button class="btn btn-danger" type="button"
+      (click)="deleteProduct(product)">Delete Product</button>
+      
+      <button [disabled]='!addProduct.valid ||!addProduct.dirty' class="btn btn-success">Save Product</button>
+      
+    </form>
+
+    <div class='alert alert-danger' *ngIf="errorMessage">
+      Error : {{errorMessage}}
+    </div>
+
+</div>
