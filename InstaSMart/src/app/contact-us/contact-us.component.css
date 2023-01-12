@@ -1,0 +1,45 @@
+#contact-page {
+    background: rgb(84, 238, 84);
+}
+.contact-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.contact-info {
+    background: white;
+    padding: 80px;
+    max-width: 500px;
+    text-align: center;
+  }
+  
+.contact-info h2 {
+    font-size: 40px;
+}
+.form {
+    width: 950px;
+    padding:20px;
+    background: lightgrey;
+    background-size: cover;
+    background-position: center;
+}
+  
+form {
+    display: flex;
+    flex-direction: column;
+}
+form input{
+    padding: 10px;
+    margin-bottom: 20px;
+}
+form textarea{
+    padding: 10px;
+    margin-bottom: 10px;
+}
+form button{
+    padding: 10px;
+    width: 25%;
+}
+.error{
+    color: red;
+}
