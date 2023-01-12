@@ -1,0 +1,61 @@
+<div class="card" style=" width: 80%; margin: auto;">
+    <div class="card-header">
+        <h2>Product List</h2>
+        <h4> {{title}}</h4>
+    </div>
+    
+    <div class="card-body">
+        <div class="table-responsive">    
+            <input type="text" (keyup)="filterProd()" [(ngModel)]="category" placeholder="category">
+            
+            <!-- *ngIf="products.length" -->
+            <table class="table ">
+                <tr>
+                    <th>#Id</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Image</th>
+                    <th>Quantity</th>
+                </tr>
+
+                <tr *ngFor="let p of obsProducts$ | async ;let i = index">
+                    <td>{{p.id}}</td>
+                    <td>{{p.name}}</td>
+                    <td  (click)="productSelected(p)">{{p.category}}</td>
+                    <td>{{p.price}}</td>
+                    <td>
+                        <app-star 
+                            [rating]="p.rating"
+                            (ratingEventClicked) = "ratingClick($event)">
+                        </app-star>
+                    </td>
+                    <td (mouseover)="toggleHover()" (mouseout)="toggleHover()">
+                        <img src="{{p.image}}" alt="" [@hover]="isHovering ? 'hoverIn' : 'hoverOut' ">
+                    </td>
+                    <!-- <td>
+                        <button 
+                        (click)="onSelect(p)"
+                        class="btn btn-primary bg-dark">add to cart
+                        </button>
+                    </td> -->
+                    <td>
+                        <span (click)="increaseQuantity(p)"><i class="fa fa-plus"></i></span>
+                        <span>{{p.quantity}}</span>
+                        <span  (click)="decreaseQuantity(p)"><i class="fa fa-minus"></i></span>
+                    </td>
+                </tr>
+            </table>
+            
+            <!-- <button (click)="displayProd()"  
+                type="button" class="btn btn-secondary">
+                displayProducts
+            </button> -->
+
+            <button class="btn btn-primary" (click)="newProduct()" [routerLink]="['addProduct']">
+                Add Product
+            </button>
+        </div>
+    </div> 
+</div>
