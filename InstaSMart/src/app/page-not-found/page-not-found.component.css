@@ -1,0 +1,11 @@
+.heading{
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 15px;
+    text-align: center;
+}
+button{
+    margin: 25px;
+    padding: 10px;
+    width: 15%;
+}

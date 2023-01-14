@@ -1,0 +1,31 @@
+h1{
+    text-align: center;
+    margin: 15px;
+    padding: 15px;
+}
+.float-parent-element { 
+    width: 50%; 
+} 
+.float-child-element { 
+    float: left; 
+    width: 50%; 
+} 
+.red { 
+    border: 2px solid red;
+    padding: 50px; 
+    margin-top: 130px;
+    margin-left: 50%; 
+    width: 700px;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+} 
+.yellow { 
+    margin-left: 150%; 
+    height: 600px;
+    width: 300px; 
+    padding: 50px;
+    border: 2px solid red; 
+    text-align: center;
+    font-size: 1rem;
+}
