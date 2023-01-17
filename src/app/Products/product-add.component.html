@@ -1,0 +1,11 @@
+<div class="container">
+    <form [formGroup]="addProduct" (ngSubmit)="onSubmit()">
+        <label for="name">Product Name:</label><br>
+        <input type="text" formControlName="name" placeholder="enter product name" required><br><br>
+        <label for="price">Price:</label><br>
+        <input type="number" formControlName="price" placeholder="enter product price" required><br><br>
+        <label for="image">Image:</label><br>
+        <input type="text" formControlName="image" placeholder="enter product image src"><br><br>
+        <button class="btn btn-success" [disabled]="!addProduct.valid" style="width: 10%;">Save</button>
+    </form>
+</div>
