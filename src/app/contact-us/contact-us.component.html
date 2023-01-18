@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Contact Us</title>
+    </head>
+    <body id="contact-page">
+        <h1>Contact Us</h1>
+        <div class="contact-grid">
+            <div class="form">
+                <form class="cForm" id="cForm" name="cForm" #cform="ngForm" (ngSubmit)="onSubmit(cform)">
+                    <label for="firstname">First Name</label><br>
+                    <input #firstname="ngModel" type="text" id="firstname" name="firstname" class="firstname" required placeholder="Your name" ngModel>
+                    <div *ngIf="!firstname?.valid && (firstname?.dirty || firstname?.touched)" class="error">
+                        <div *ngIf="firstname.errors?.['required']">
+                            First Name is required
+                        </div>
+                    </div><br>
+                    <label for="lastname">Last Name</label><br>
+                    <input type="text" #lastname="ngModel" id="lastname" name="lastname" class="lastname" required placeholder="Your last name" ngModel>
+                    <div *ngIf="!lastname?.valid && (lastname?.dirty || lastname?.touched)" class="error">
+                        <div *ngIf="lastname.errors?.['required']">
+                            Last Name is required
+                        </div>
+                    </div><br>
+                    <label for="store">Store</label><br>
+                    <input type="text" #store="ngModel" id="store" name="store" class="store" required placeholder="store1" ngModel>
+                    <div *ngIf="!store?.valid && (store?.dirty || store?.touched)" class="error">
+                        <div *ngIf="store.errors?.['required']">
+                            Store is required
+                        </div>
+                    </div><br>
+                    <label for="comments">Comments</label><br>
+                    <textarea name="comments" #comments="ngModel" id="comments" cols="30" rows="10" placeholder="write your comments" ngModel></textarea>
+                    <div *ngIf="!comments?.valid && (comments?.dirty || comments?.touched)" class="error">
+                        <div *ngIf="comments.errors?.['required']">
+                            Comments are required
+                        </div>
+                    </div><br>
+                    <button class="btn btn-success">Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
