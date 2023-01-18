@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Login Form</title>
+    </head>
+    <body>
+        <div class="container">
+            <form id="loginForm" name="loginForm" class="loginForm" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+                <label for="username">Enter Username</label><br>
+                <input type="text" #username="ngModel" minlength="5" maxlength="25" required name="username" id="username" class="username" ngModel><br>
+                <div id="uid" *ngIf="!username.valid && (username?.dirty || username?.touched)">
+                    <div *ngIf="username.errors?.['required']">
+                        Username is required
+                    </div>
+                    <div *ngIf="username.errors?.['minlength']">
+                        Mininimum length is 5
+                    </div>
+                </div><br>
+                <label for="password">Enter Password</label><br>
+                <input type="password" #password="ngModel" minlength="8" maxlength="25" required name="password" id="password" class="password" ngModel><br><br>
+                <div id="uid" *ngIf="!password.valid && (password?.dirty || password?.touched)">
+                    <div *ngIf="password.errors?.['required']">
+                        Password is required
+                    </div>
+                    <div *ngIf="password.errors?.['minlength']">
+                        Mininimum length is 8
+                    </div>
+                </div><br><button class="btn btn-success" type="submit" [disabled]="!loginForm.valid">login</button>
+                <button class="btn btn-primary" type="reset" (click)="reset(loginForm)">clear</button>
+                <button class="btn btn-warning" type="submit" (click)="cancel()">cancel</button>
+            </form>
+        </div><br>
+        <div class="card">
+            <div class="card-body">
+                Haven't signed up yet?<br>
+                <button class="btn btn-primary" type="submit" (click)="reg()">Register here!</button>
+            </div>
+        </div>
+    </body>
+</html>
