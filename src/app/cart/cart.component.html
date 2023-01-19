@@ -1,0 +1,28 @@
+<div class="card" style="width: 80%; margin: auto;">
+    <div class="card-header">
+        <h2>Cart List</h2>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">  
+            <table class="table ">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let p of prods;let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.price}}</td>
+                    <td>
+                        <button class="btn btn-warning" (click)="removeProd(p)">Remove</button>
+                    </td>
+                </tr>
+            </table>
+        </div><br>
+        <button class="btn btn-success" (click)="checkout()">Checkout</button>
+        <button class="btn btn-danger" style="margin-left: 5px;" (click)="emptycart()">Clear</button>
+    </div>
+    <h5 style="text-align: center;" id="mssg">Cart Amount: {{amt|currency:'INR'}}</h5>
+</div>

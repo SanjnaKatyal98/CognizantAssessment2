@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Registeration Form</title>
+    </head>
+    <body>
+        <h1 style="text-align: center; padding: 10px; margin: 10px;">Registeration Form</h1>
+        <div id="container" class="form-group">
+            <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+                Enter Name: <input class="form-control" type="text" formControlName="fullName" name="fullName" class="fullName" id="fullName" required minlength="3"><br>
+                <div *ngIf="fullName">
+                    <div *ngIf="!fullName.valid && (fullName.dirty||fullName.touched)">
+                        <div [hidden]="!fullName.errors?.['required']"> Name is required</div>
+                    </div>
+                    <div *ngIf="fullName.errors?.['minlength']"> Name minimum number of chars required is 3</div>
+                </div><br>
+                Enter Email: <input class="form-control" type="email" name="mail" id="mail" formControlName="mail" required><br>
+                <div *ngIf="mail">
+                    <div *ngIf="!mail.valid && (mail.dirty||mail.touched)">
+                        <div [hidden]="!mail.errors?.['required']"> Email is required</div>
+                    </div>
+                </div><br>
+                Select Gender: <input type="radio" id="sex" name="sex" value="male" formControlName="male">Male
+                            <input type="radio" id="sex" name="sex" value="female" formControlName="female">Female
+                            <input type="radio" id="sex" name="sex" value="other" formControlName="other">Other
+                            <br>
+                <div *ngIf="sex">
+                    <div *ngIf="!sex.valid && (sex.dirty||sex.touched)">
+                        <div [hidden]="!sex.errors?.['required']"> Gender is required</div>
+                    </div>
+                </div><br>
+                <div formGroupName="addr">Enter Address: 
+                    <input class="form-control" type="text" formControlName="city" id="city" name="city" required><br>
+                    <input class="form-control" type="text" formControlName="state" id="state" name="state" required><br>
+                    <input class="form-control" type="text" formControlName="country" id="country" name="country" required><br>
+                    <div *ngIf="city">
+                        <div *ngIf="!city.valid && (city.dirty||city.touched)">
+                            <div [hidden]="!city.errors?.['required']"> city field in address is required</div>
+                        </div>
+                    </div><br>
+                    <div *ngIf="state">
+                        <div *ngIf="!state.valid && (state.dirty||state.touched)">
+                            <div [hidden]="!state.errors?.['required']"> state field in address is required</div>
+                        </div>
+                    </div><br>
+                    <div *ngIf="country">
+                        <div *ngIf="!country.valid && (country.dirty||country.touched)">
+                            <div [hidden]="!country.errors?.['required']"> country field in address is required</div>
+                        </div>
+                    </div>
+                </div>
+                <label for="password">Enter Username:</label><br>
+                <input type="text" class="form-control" formControlName="username" minlength="5" maxlength="20" required name="username" id="username"><br>
+                <div *ngIf="username">
+                    <div *ngIf="!username.valid && (username.dirty||username.touched)">
+                        <div [hidden]="!username.errors?.['required']"> username is required</div>
+                    </div>
+                </div><br>
+                <label for="password">Enter Password:</label><br>
+                <input class="form-control" type="password" formControlName="password" minlength="8" maxlength="25" required name="password" id="password"><br><br>
+                <div *ngIf="password">
+                    <div *ngIf="!password.valid && (password.dirty||password.touched)">
+                        <div [hidden]="!password.errors?.['required']"> password is required</div>
+                    </div>
+                </div>
+                <button class="btn btn-success" type="submit" [disabled]="!regForm.valid" (click)="back()">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>

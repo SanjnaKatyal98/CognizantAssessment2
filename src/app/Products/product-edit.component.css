@@ -1,0 +1,9 @@
+.container{
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid violet;
+}
+input{
+    width: 20%;
+}

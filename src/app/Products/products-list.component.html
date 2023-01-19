@@ -1,0 +1,30 @@
+<div class="container">
+    <input type="text" (keypress)="filterData(c)" [(ngModel)]="c" class="filterP" id="filterP" name="filterP" placeholder="enter item name"><br>
+    <h3>filter by {{c}}</h3><br>
+    <table *ngIf="product.length;else elseBlock" class="table table-striped" style="background-color: LightCyan;">
+        <thead>
+        <tr>
+            <th scope="col">Sno</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Image</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of filteredList;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.price}}</td>
+            <td><img src="{{p.image}}" alt="no image"></td>
+            <td>
+                <button class="btn btn-secondary bg-dark" (click)="addToCart(p)">add to cart</button>
+                <button class="btn btn-danger" style="margin-left: 5px;" (click)="delProd(p)">Delete Product</button>
+                <button class="btn btn-info" style="margin-left: 5px;" (click)="prodUpdate(p)">update/edit</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="newProduct()">Add Product</button>
+    <ng-template #elseBlock><h4 style="color: red; text-align: center;">no products</h4></ng-template>
+</div>
