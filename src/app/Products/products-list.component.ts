@@ -64,6 +64,7 @@ export class ProductsListComponent implements OnInit,OnDestroy{
 
   //deleting specific product
   delProd(p:IProduct):void{
+    //this.store.dispatch(deleteProduct({productId: 0, id:product.id}))
     if(p && p.id){
       if(confirm(`Are You sure to delete ${p.name} details?`)){
         this.prodServ.deleteProd(p.id).subscribe(
@@ -83,6 +84,7 @@ export class ProductsListComponent implements OnInit,OnDestroy{
     this.prodServ.updateProd(p).subscribe(
       (resp)=>this.prodServ.changeSelectedProd(p),
       err=>this.errMssg=err);
+    this.store.dispatch(loadProducts(product.id));
     this.router.navigate(['editProduct']);
   }
   
