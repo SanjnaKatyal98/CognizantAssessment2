@@ -34,6 +34,9 @@ emptycart(){
     this.cartService.emptyCart();
   this.isCartEmpty=this.cartService.cartEmpty;
   }
+hasCart() {
+    return this.cartService.cartItemList.length>0
+  }
 
   removeProd(p:IProduct){
     this.cartService.removeCartItem(p);
