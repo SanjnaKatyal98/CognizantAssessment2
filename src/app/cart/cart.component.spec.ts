@@ -43,4 +43,11 @@ describe('CartComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('cart');
   });
+  
+  it('should check is cart is empty checkout button is disabled', ()=>{
+    component.isCartEmpty=true;
+    fixture.detectChanges();
+    expect(fixture.debugElement.query(By.css('button')).nativeElement.disabled).toBeTruthy();
+
+  });
 });
