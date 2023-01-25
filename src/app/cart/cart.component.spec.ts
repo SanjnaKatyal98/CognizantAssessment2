@@ -48,6 +48,9 @@ describe('CartComponent', () => {
     component.isCartEmpty=true;
     fixture.detectChanges();
     expect(fixture.debugElement.query(By.css('button')).nativeElement.disabled).toBeTruthy();
-
+  });
+  
+  it("Button Must Be Disabled If there is not Items in cart",()=>{ //Button State Testing for disability
+    expect(fixture.nativeElement.querySelector("#checkout").disabled).toBeTrue();
   });
 });
