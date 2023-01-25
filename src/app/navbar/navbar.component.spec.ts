@@ -34,4 +34,34 @@ describe('NavbarComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('navbar');
   });
+  
+  it('testing home navbar',()=>{
+    const el = fixture.debugElement.query(By.css('.nav-link'));
+    expect(el).toBeTruthy();
+    expect(el.nativeElement.getAttribute('#home')).toBeTrue;
+  });
+   it('testing veges navbar',()=>{
+    const el = fixture.debugElement.query(By.css('.nav-link'));
+    expect(el).toBeTruthy();
+    expect(el.nativeElement.getAttribute('#prods')).toBeTrue;
+  });
+  it('testing aboutus navbar',()=>{
+    const el = fixture.debugElement.query(By.css('.nav-link'));
+    expect(el).toBeTruthy();
+    expect(el.nativeElement.getAttribute('#aboutus')).toBeTrue;
+  });
+  it('testing contactus navbar',()=>{
+    const el = fixture.debugElement.query(By.css('.nav-link'));
+    expect(el).toBeTruthy();
+    expect(el.nativeElement.getAttribute('#contactus')).toBeTrue;
+  });
+ 
+  it('should test username in navbar',()=>{
+    component.uname='sanjna';
+    fixture.detectChanges();
+   const ele=fixture.debugElement.nativeElement.querySelector('#userdetail');
+   expect(ele.innerHTML).toBe('Hi sanjna');
+    // const element=el.nativeElement.getAttribute('#userdetail');
+
+  });
 });
