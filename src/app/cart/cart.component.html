@@ -22,7 +22,8 @@
             </table>
         </div><br>
         <button class="btn btn-success" (click)="checkout()" [disabled]='isCartEmpty'>Checkout</button>
-        <button class="btn btn-danger" style="margin-left: 5px;" (click)="emptycart()">Clear</button>
+        <button class="btn btn-danger" style="margin-left: 5px;" [disabled]="!hasCart()" id="checkout"  (click)="emptycart()">Clear</button>
     </div>
+    <td><button routerLink="" class="btn btn-primary">Shop More</button></td><br>
     <h5 style="text-align: center;" id="mssg">Cart Amount: {{amt|currency:'INR'}}</h5>
 </div>
