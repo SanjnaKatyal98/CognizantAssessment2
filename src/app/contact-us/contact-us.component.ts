@@ -19,4 +19,8 @@ export class ContactUsComponent implements OnInit{
     console.log(cForm.value);
     this.router.navigate(['login']);
   }
+
+submit(){
+    alert('Thanks we will contact you soon');
+}
 }
