@@ -9,10 +9,11 @@ import { IProduct } from '../Products/product';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit{
+export class CartComponent implements OnInit,OnChanges{
   //initialisation
   prods:IProduct[]=[];
   amt!:number;
+isCartEmpty:boolean=false;
   title:string='cart';
   constructor(private cartService:CartService,private router:Router){}
   
@@ -22,11 +23,16 @@ export class CartComponent implements OnInit{
     this.cartService.getProds().subscribe(res=>{
       this.prods=res;
       this.amt=this.cartService.getTotalPrice();
+      this.isCartEmpty=this.cartService.cartEmpty;
     });
   }
   
-  emptycart(){
+  ngOnChanges(){
+  }
+  
+emptycart(){
     this.cartService.emptyCart();
+  this.isCartEmpty=this.cartService.cartEmpty;
   }
 
   removeProd(p:IProduct){
