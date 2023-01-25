@@ -14,6 +14,9 @@ import {deleteProduct, loadProducts} from "../../state/product/product.action";
 })
 export class ProductEditComponent implements OnInit{
   editProduct!:FormGroup;
+ product:Product|undefined;
+  productList:Product[]=[];
+  productList$:Observable<Product[]>=new Observable();
   
   onSubmit(){
     console.info(`The Item editd`);
